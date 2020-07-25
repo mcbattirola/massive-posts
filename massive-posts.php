@@ -23,11 +23,11 @@ define( 'MASSIVE_POSTS_NS', 'massive-posts' );
 define( 'MASSIVE_POSTS_SLUG', 'massive-posts' );
 
 if ( ! class_exists( '\Massive_Posts\Massive_Posts' ) ) {
-	// include_once dirname( MASSIVE_POSTS_ROOT_PATH ) . '/includes/mowp-tools/mowp-tools.php';
-	// include_once dirname( MASSIVE_POSTS_ROOT_PATH ) . '/includes/massive-posts-utils.php';
-	// include_once dirname( MASSIVE_POSTS_ROOT_PATH ) . '/includes/massive-posts-options.php';
+	include_once dirname( MASSIVE_POSTS_ROOT_PATH ) . '/includes/mowp-tools/mowp-tools.php';
+	include_once dirname( MASSIVE_POSTS_ROOT_PATH ) . '/includes/massive-posts-utils.php';
+	include_once dirname( MASSIVE_POSTS_ROOT_PATH ) . '/includes/massive-posts-options.php';
 	include_once dirname( MASSIVE_POSTS_ROOT_PATH ) . '/includes/massive-posts.php';
 
-	// MOWP_Tools::init();
+	MOWP_Tools::init();
 	Massive_Posts::init();
 }

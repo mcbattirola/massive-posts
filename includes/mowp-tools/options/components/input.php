@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Input extends Component {
 	public static $TYPE_TEXT = 0;
+	public static $TYPE_NUMBER = 1;
 
 	public function __construct( $type, $name, $id = null, $classes = [] ) {
 		parent::__construct( 'input', false, $id, $classes );
@@ -22,6 +23,9 @@ class Input extends Component {
 		$this->add_attribute( 'name', $name );
 
 		switch ( $type ) {
+			case self::$TYPE_NUMBER:
+				$this->add_attribute( 'type', 'number' );
+				break;
 			case self::$TYPE_TEXT:
 			default:
 				$this->add_attribute( 'type', 'text' );

@@ -6,24 +6,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class MOWP_Tools {
-	public static function init() {
-		include_once dirname( __FILE__ ) . '/settings.php';
-		include_once dirname( __FILE__ ) . '/utils/html-element.php';
-		include_once dirname( __FILE__ ) . '/utils/html-theme.php';
-		include_once dirname( __FILE__ ) . '/utils/security.php';
-		include_once dirname( __FILE__ ) . '/utils/template.php';
-		include_once dirname( __FILE__ ) . '/integrations/woocommerce/log.php';
-		
+	public static function init() {		
 		if ( is_admin() ) {
+			include_once dirname( __FILE__ ) . '/settings.php';
+			include_once dirname( __FILE__ ) . '/utils/html-element.php';
+			include_once dirname( __FILE__ ) . '/utils/html-theme.php';
+			include_once dirname( __FILE__ ) . '/utils/security.php';
+			include_once dirname( __FILE__ ) . '/utils/template.php';
+			include_once dirname( __FILE__ ) . '/integrations/woocommerce/log.php';
 			include_once dirname( __FILE__ ) . '/options/components/component.php';
 			include_once dirname( __FILE__ ) . '/options/components/component_generic.php';
 			include_once dirname( __FILE__ ) . '/options/components/component_ghost.php';
 			include_once dirname( __FILE__ ) . '/options/components/button.php';
 			include_once dirname( __FILE__ ) . '/options/components/container.php';
 			include_once dirname( __FILE__ ) . '/options/components/input.php';
+			include_once dirname( __FILE__ ) . '/options/components/option.php';
+			include_once dirname( __FILE__ ) . '/options/components/select.php';
 			include_once dirname( __FILE__ ) . '/options/components/textarea.php';
 			include_once dirname( __FILE__ ) . '/options/components/label.php';
 			include_once dirname( __FILE__ ) . '/options/components/field.php';
+			include_once dirname( __FILE__ ) . '/options/components/field-select.php';
 			include_once dirname( __FILE__ ) . '/options/components/field-textarea.php';
 			include_once dirname( __FILE__ ) . '/options/components/heading.php';
 			include_once dirname( __FILE__ ) . '/options/components/hr.php';
