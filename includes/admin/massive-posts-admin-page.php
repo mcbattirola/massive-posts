@@ -1,7 +1,6 @@
 <?php
 namespace Massive_Posts\Admin;
 
-use Massive_Posts\Massive_Posts_Options;
 use Massive_Posts\MOWP_Tools\Options\Pages\Page;
 use Massive_Posts\MOWP_Tools\Options\Components\Option;
 use Massive_Posts\MOWP_Tools\Options\Components\Field;
@@ -19,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Massive_Posts_Admin_Page extends Admin_Page {
+    private $panel_ribbon;
 
     public function __construct() {
         if ( isset( $_POST[ 'post-id' ] ) && isset( $_POST[ 'sufix' ] ) && isset( $_POST[ 'num-posts' ] ) ) {
@@ -31,6 +31,9 @@ class Massive_Posts_Admin_Page extends Admin_Page {
         $page->append_page_child( $new_customer_panel );
         
         $new_customer_panel->activate_form();
+        if ( !is_null ( $this->$panel_ribbon ) ) {
+            $new_customer_panel->append_child( $this->$panel_ribbon );
+        }
 
         $new_customer_panel_container = new Panel_Container();
         $new_customer_panel->append_child( $new_customer_panel_container );
@@ -53,15 +56,17 @@ class Massive_Posts_Admin_Page extends Admin_Page {
         $template_post = get_post( $post_id );
 
         for ($i=0; $i < $num_posts; $i++) { 
+            $post_number = $i + 1;
             wp_insert_post( array(
-                'post_title'    => wp_strip_all_tags( $template_post->post_title . $sufix . $i ),
-                'post_content'  => $template_post->post_content . $sufix . $i ,
-                'post_author'   =>  $template_post->post_author . $sufix . $i ,
-                'post_excerpt'   =>  $template_post->post_excerpt . $sufix . $i ,
+                'post_title'    => wp_strip_all_tags( $template_post->post_title . $sufix . $post_number ),
+                'post_content'  => $template_post->post_content . '<p>' . $sufix . $post_number . '</p>',
+                'post_author'   =>  $template_post->post_author,
+                'post_excerpt'   =>  $template_post->post_excerpt . $sufix . $post_number ,
                 'post_status'   => 'publish',
             ) );
         }
-        
+
+        $this->$panel_ribbon = new Panel_Ribbon( 'Successfully created ' . $num_posts . ' posts' );        
 	}
 
     private function get_posts_options() {

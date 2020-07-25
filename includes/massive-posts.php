@@ -12,9 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Massive_Posts {
     public static function init() {
         if ( is_admin() ) {
-			register_activation_hook( MASSIVE_POSTS_ROOT_PATH, array( 'Massive_Posts\Massive_Posts_Options', 'on_activate' ) );
-			register_deactivation_hook( MASSIVE_POSTS_ROOT_PATH, array( 'Massive_Posts\Massive_Posts_Options', 'on_deactivate' ) );
-
             add_action( 'init', function() {
 				self::include_admin_dependencies();
 				self::init_admin();
