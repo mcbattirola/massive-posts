@@ -4,7 +4,6 @@ namespace Massive_Posts\Admin;
 use Massive_Posts\MOWP_Tools\Options\Pages\Page;
 use Massive_Posts\MOWP_Tools\Options\Components\Option;
 use Massive_Posts\MOWP_Tools\Options\Components\Field;
-use Massive_Posts\MOWP_Tools\Options\Components\Field_Textarea;
 use Massive_Posts\MOWP_Tools\Options\Components\Field_Select;
 use Massive_Posts\MOWP_Tools\Options\Components\Input;
 use Massive_Posts\MOWP_Tools\Options\Components\Panel;
@@ -31,6 +30,7 @@ class Massive_Posts_Admin_Page extends Admin_Page {
         $page->append_page_child( $new_customer_panel );
         
         $new_customer_panel->activate_form();
+
         if ( !is_null ( $this->$panel_ribbon ) ) {
             $new_customer_panel->append_child( $this->$panel_ribbon );
         }
@@ -58,11 +58,11 @@ class Massive_Posts_Admin_Page extends Admin_Page {
         for ($i=0; $i < $num_posts; $i++) { 
             $post_number = $i + 1;
             wp_insert_post( array(
-                'post_title'    => wp_strip_all_tags( $template_post->post_title . $sufix . $post_number ),
-                'post_content'  => $template_post->post_content . '<p>' . $sufix . $post_number . '</p>',
-                'post_author'   =>  $template_post->post_author,
-                'post_excerpt'   =>  $template_post->post_excerpt . $sufix . $post_number ,
-                'post_status'   => 'publish',
+                'post_title' => wp_strip_all_tags( $template_post->post_title . $sufix . $post_number ),
+                'post_content' => $template_post->post_content . '<p>' . $sufix . $post_number . '</p>',
+                'post_author' => $template_post->post_author,
+                'post_excerpt' => $template_post->post_excerpt . $sufix . $post_number ,
+                'post_status' => 'publish',
             ) );
         }
 

@@ -17,8 +17,8 @@ class Select extends Component {
 			'max-width' => '100%'
 		] );
 
-		foreach ($options as $option) {
-			$this->append_child($option);
+		foreach ( $options as $option ) {
+			$this->append_child( $option );
 		}
 
 		$this->add_attribute( 'name', $name );
