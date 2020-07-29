@@ -13,7 +13,6 @@ class MOWP_Tools {
 			include_once dirname( __FILE__ ) . '/utils/html-theme.php';
 			include_once dirname( __FILE__ ) . '/utils/security.php';
 			include_once dirname( __FILE__ ) . '/utils/template.php';
-			include_once dirname( __FILE__ ) . '/integrations/woocommerce/log.php';
 			include_once dirname( __FILE__ ) . '/options/components/component.php';
 			include_once dirname( __FILE__ ) . '/options/components/component_generic.php';
 			include_once dirname( __FILE__ ) . '/options/components/component_ghost.php';

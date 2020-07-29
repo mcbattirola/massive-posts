@@ -47,7 +47,7 @@ class Massive_Posts_Admin_Page extends Admin_Page {
         $number_of_posts = new Field( 'num-posts', 'Number of posts', Input::$TYPE_NUMBER );
         $new_customer_panel_container->append_child( $number_of_posts );
         
-        $new_customer_panel->append_child( new Panel_Footer_Submit( __( 'Create', LEARNDASH_BOOST_NS ) ) );
+        $new_customer_panel->append_child( new Panel_Footer_Submit( 'Create' ) );
         
         parent::__construct( $page );
     }
@@ -73,12 +73,13 @@ class Massive_Posts_Admin_Page extends Admin_Page {
         $posts = get_posts( array(
             'post_type' => 'post',
             'numberposts' => -1
-            ) );
+            )
+        );
 
         $options = array();
 
-        foreach ($posts as $post) {
-            array_push($options, new Option($post->post_title, $post->ID));
+        foreach ( $posts as $post ) {
+            array_push( $options, new Option( $post->post_title, $post->ID ) );
         }
 
         return $options;
